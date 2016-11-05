@@ -1,3 +1,3 @@
-const app = require('./app/index')
+import { num } from './app'
 
-console.log( app.num )
+console.log( num )

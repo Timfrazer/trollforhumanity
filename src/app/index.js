@@ -1,3 +1,1 @@
-module.exports = {
-  num: 42 
-}
+export const num = 42
