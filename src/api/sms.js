@@ -1,4 +1,4 @@
-const { IS_DEV = 'true', TWILIO_SID = '', TWILIO_AUTH = '', TWILIO_NUMBER = '' } = process.env
+const { IS_PRODUCTION, TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER } = process.env
 import twilio from 'twilio'
 
 // this is the substitute interface
@@ -38,5 +38,5 @@ function hot(sid, token, twilioNumber) {
   }
 }
 
-const api = IS_DEV === 'true' ? substitute : hot
+const api = IS_PRODUCTION === 'true' ? hot : substitute
 export default api( TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER )
