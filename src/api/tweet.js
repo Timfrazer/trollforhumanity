@@ -10,7 +10,7 @@ const substitute = () => ({
       if (!username || !message) {
         cb('missing username or message', null)
       } else {
-        cb(null, 'sent')
+        cb(null, `sub::tweet sent at ${ Date.now() }`)
       }
     }, 500 )
   }
@@ -32,7 +32,7 @@ const  hot = (consumer_key, consumer_secret, access_token_key, access_token_secr
 }
 
 const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default hot(
+export default substitute(
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN_KEY,

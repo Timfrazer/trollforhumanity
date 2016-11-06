@@ -22,16 +22,22 @@ const substitute = () => {
   }
 }
 
+const fakeMsg = [
+  { message: 'you are a troll, bigly', time: new Date( Date.now() ) },
+  { message: 'you are a tremendous troll', time: new Date( Date.now() ) }
+]
+
 const hot = () => {
 
   return {
 
-    troll: params => {
+    troll: params => new Promise( (res, rej) => {
       let user = models.makeUser( params )
       carePackages.load( user )
       scheduler.schedule( user )
-      return 'todo src/index'
-    }
+      
+      res( fakeMsg )
+    })
   }
 }
 

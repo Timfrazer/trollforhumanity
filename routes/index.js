@@ -31,8 +31,8 @@ router.post('/troll', function(req, res) {
   }
 
   // ( name, { email = '', phone = '', twitter = '' } )
-  app.troll( params ).done( msgs => {
-    res.render('confirm', { messages: msgs });
+  app.troll( params ).then( msgs => {
+    res.render('confirm', { messages: JSON.stringify(msgs) });
   })
 
 });

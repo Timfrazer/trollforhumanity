@@ -12,7 +12,7 @@ function substitute() {
         if (!phone || !message) {
           cb('missing phone or message', null)
         } else {
-          cb(null, 'sent')
+          cb(null, `sub::sms sent at ${ Date.now() }`)
         }
       }, 500 )
     }
@@ -42,4 +42,4 @@ function hot(sid, token, twilioNumber) {
 }
 
 const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default hot( TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER )
+export default substitute( TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER )

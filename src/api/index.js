@@ -6,8 +6,7 @@ const substitute = () => ({
   send: ( { type, recipient, message, cb } ) => {
     setTimeout( () => {
       let time = new Date( Date.now() )
-      console.log( `sent ${ type } to ${ recipient } at ${ time.getHours() }:${ time.getMinutes() }:${ time.getMinutes() }` )
-      cb( null, 'all sent' )
+      cb( null, `sub::sent ${ type } to ${ recipient } at ${ time.getHours() }:${ time.getMinutes() }:${ time.getMinutes() }` )
     }, 500 )
   }
 })
