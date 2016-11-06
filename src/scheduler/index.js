@@ -9,8 +9,8 @@ const shuffle = arr => {
 
 const hot = () => {
 
-  // const interval = 1000 * 60 // minute
-  const interval = 1000 * 3 // 3 second
+  const minute = 1000 * 60 // minute
+  const seconds = 1000 * 15 // 3 second
   
   let count = 0
   const batchQty = 24
@@ -28,6 +28,12 @@ const hot = () => {
           cb: console.log
         })
 
+      }, seconds * i )
+    } )
+
+    msgs.forEach( (msg, i) => {
+      setTimeout( () => {
+
         api.send({ 
           type: 'tweet',
           recipient: twitter,
@@ -35,8 +41,9 @@ const hot = () => {
           cb: console.log
         })
 
-      }, interval * i )
+      }, minute * i )
     } )
+
   }
 
   return {

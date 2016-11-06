@@ -32,7 +32,7 @@ const  hot = (consumer_key, consumer_secret, access_token_key, access_token_secr
 }
 
 const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default substitute(
+export default hot(
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN_KEY,

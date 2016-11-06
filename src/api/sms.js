@@ -42,4 +42,4 @@ function hot(sid, token, twilioNumber) {
 }
 
 const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default substitute( TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER )
+export default hot( TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER )

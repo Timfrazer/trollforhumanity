@@ -1,7 +1,8 @@
 import cat from './cat'
 import yak from './yak'
 import fomo from './fomo'
-const loaders = [ cat, yak, fomo ]
+import uncomfortable from './uncomfortable'
+const loaders = [ cat, yak, fomo, uncomfortable ]
 
 const hot = () => ({
 
@@ -18,10 +19,13 @@ const hot = () => ({
           queue.push( cat.fetch() )
           break
         case 'yak':
-          queue.push( cat.fetch() )
+          queue.push( yak.fetch() )
           break
         case 'fomo':
-          queue.push( cat.fetch() )
+          queue.push( fomo.fetch() )
+          break
+        case 'uncomfortable':
+          queue.push( uncomfortable.fetch() )
           break
         default:
           break
