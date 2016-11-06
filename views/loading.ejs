@@ -1,75 +1,73 @@
 <!doctype html>
-
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-  <meta charset="utf-8">
-  <title>Trolling for "humanity" </title>
-  <meta name="Trolling for humanity" content="The HTML5 of the gods">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<style>
-@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-body {
-  background-color: #151515;
-}
 
-.container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
-#text {
-  font-family: 'Crimson Text', serif;
-  font-size: 32px;
-  letter-spacing: 0.15em;
-  font-weight: 600;
-  color: #fff;
-  animation: text 2s infinite;
-  display: block;
-}
-#subtext {
-  font-family: 'Crimson Text', serif;
-  font-size: 18px;
-  letter-spacing: 0.15em;
-  font-weight: 600;
-  color: #fff;
-  display: block;
-}
-@keyframes text {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    color: #151515;
-    box-shadow: inset 270px 0 0 0 #e0e0e0;
-  }
-  100% {
-    box-shadow: inset -270px 0 0 0 #e0e0e0;
-    opacity: 0;
-  }
-}
+	<title>Troll for humanity</title>
+	<style>
 
-</style>
+		body, html {
+			background-color: black;
+			margin: 0;
+			padding: 0;
+		}
 
+		header {
+			background-color: rgba(0,0,0,0.6);
+			border-radius: 25px;
+			color: #FFF;
+			padding: 20px 40px;
+			position: absolute;
+			top: 30%;
+			right: -2%;
+			text-align: center;
+			width: 50%;
+		}
+
+		header > p, header > h1 {
+			margin-top: 30px;
+			width: 80%;
+		}
+
+		video {
+			height: 100%;
+			width: 100%;
+		}
+
+		.butt-butt {
+			border-radius: 5px;
+			background-color: #77DDAA;
+			color: white;
+			font-size: 1.6em;
+			font-weight: 800;
+			padding: 10px 20px;
+			margin-top: 0px;
+			text-decoration: none;
+		}
+
+	</style>
 </head>
+<body>
+	<header>
+		<h1>Most victims of cyber-bullying suffer anonymously.</h1>
+		<p>
+			The first step to fighting cyber-bullying is recognizing it when it happens.
+			If you or someone you know would benefit from experiencing first-hand what a victim
+			goes through, sign up for a <strong style="color: #FFAADD">cyber-empathy package</strong> by clicking the button below.
+		</p>
+		<p>
+			<a href="/troll" class="butt-butt">Start</a>
+		</p>
+	</header>
 
-<body style="text-align:center;">
-<div style = "min-height:100px;"> </div>
-<div class="container">
-  <div id="text">TROLLING FOR HUMANITY</div>
-  <div id ="subtext">
-    <p>
-      This service is provided as an awareness tool for developing your ability  to understand what cyber bulling.<br>
-       We do this by providing you the tools and serivces to commit these horrible acts.
-    </p>
+	<section id="cd-timeline" class="cd-container">
+		<video src="/img/cyber-bullying-victims.mp4" autoplay loop></video>
+	</section> <!-- cd-timeline -->
 
-    <a href="/troll" class="bbtn btn-default btn-lg">
-  <span class="glyphicon glyphicon-plus"></span> Raise awareness
-</a>
-       </div>
-</div>
+<script>
+</script> <!-- Resource jQuery -->
 </body>
 </html>
