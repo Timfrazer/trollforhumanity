@@ -103,7 +103,7 @@
 	</section> <!-- cd-timeline -->
 
 	<section id="confirm-area">
-		<p><a class="confirm-button" href="/troll">Confirm</a></p>
+		<p><a class="confirm-button" href="/thankyouuu">Confirm</a></p>
 		<p>(No takebacksies)</p>
 	</section>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -240,51 +240,51 @@
 			});
 		}
 
-		function generateMessages(messages) {
+//		function generateMessages(messages) {
+//
+//			for (var i = 0; i < messages.length; i++) {
+//				var date = moment(messages[i]['time']).format("MMMM Do, YYYY [at] H[:]mm[:]ss");
+//				$('#cd-timeline').append(
+//					`<div class="cd-timeline-block">
+//						<div class="cd-timeline-img cd-picture">
+//							<img src="img/cd-icon-location.svg" alt="Picture">
+//						</div> <!-- cd-timeline-img -->
+//
+//						<div class="cd-timeline-content card-against-hoonamity">
+//							<h2 class="message-content">"${messages[i]['message']}"</h2>
+//							<p>Delivery on: <strong>${date}</strong></p>
+//							<p><a href="#0" class="cd-read-more change-button">Change</a></p>
+//							<span class="cd-date">🤖</span>
+//						</div> <!-- cd-timeline-content card-against-hoonamity -->
+//					</div> <!-- cd-timeline-block -->`
+//				);
+//			};
+//			setupChangeButtons();
+//		};
 
-			for (var i = 0; i < messages.length; i++) {
-				var date = moment(messages[i]['time']).format("MMMM Do, YYYY [at] H[:]mm[:]ss");
-				$('#cd-timeline').append(
-					`<div class="cd-timeline-block">
-						<div class="cd-timeline-img cd-picture">
-							<img src="img/cd-icon-location.svg" alt="Picture">
-						</div> <!-- cd-timeline-img -->
+function generateMessages(message_type) {
+var msg = arrayOfMessages(messages[message_type]);
+console.log(msg);
+var content = generateMessageDates(msg);
 
-						<div class="cd-timeline-content card-against-hoonamity">
-							<h2 class="message-content">"${messages[i]['message']}"</h2>
-							<p>Delivery on: <strong>${date}</strong></p>
-							<p><a href="#0" class="cd-read-more change-button">Change</a></p>
-							<span class="cd-date">🤖</span>
-						</div> <!-- cd-timeline-content card-against-hoonamity -->
-					</div> <!-- cd-timeline-block -->`
-				);
-			};
-			setupChangeButtons();
-		};
+for (var i = 0; i < content.length; i++) {
+$('#cd-timeline').append(
+`<div class="cd-timeline-block">
+<div class="cd-timeline-img cd-picture">
+<img src="img/cd-icon-location.svg" alt="Picture">
+</div> <!-- cd-timeline-img -->
 
-		// function generateMessages(message_type) {
-		// 	var msg = arrayOfMessages(messages[message_type]);
-		// 	console.log(msg);
-		// 	var content = generateMessageDates(msg);
-		//
-		// 	for (var i = 0; i < content.length; i++) {
-		// 		$('#cd-timeline').append(
-		// 			`<div class="cd-timeline-block">
-		// 				<div class="cd-timeline-img cd-picture">
-		// 					<img src="img/cd-icon-location.svg" alt="Picture">
-		// 				</div> <!-- cd-timeline-img -->
-		//
-		// 				<div class="cd-timeline-content card-against-hoonamity">
-		// 					<h2 class="message-content">"${content[i]['message']}"</h2>
-		// 					<p>Delivery on: <strong>${content[i]['date']}</strong></p>
-		// 					<p><a href="#0" class="cd-read-more change-button">Change</a></p>
-		// 					<span class="cd-date">🤖</span>
-		// 				</div> <!-- cd-timeline-content card-against-hoonamity -->
-		// 			</div> <!-- cd-timeline-block -->`
-		// 		);
-		// 	};
-		// 	setupChangeButtons();
-		// };
+<div class="cd-timeline-content card-against-hoonamity">
+<h2 class="message-content">"${content[i]['message']}"</h2>
+<p>Delivery on: <strong>${content[i]['date']}</strong></p>
+<p><a href="#0" class="cd-read-more change-button">Change</a></p>
+<span class="cd-date">🤖</span>
+</div> <!-- cd-timeline-content card-against-hoonamity -->
+</div> <!-- cd-timeline-block -->`
+);
+};
+setupChangeButtons();
+};
 
 
 		// Takes in array of messages, spits out array of message-date objects
