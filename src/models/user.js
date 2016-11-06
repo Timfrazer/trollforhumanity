@@ -10,6 +10,7 @@ const queueManager = state => {
   state.sentQueue = []
 
   return {
+    
     addToQueue: msgs => {
       state.queue = state.queue.concat( msgs )
       return true
@@ -27,6 +28,37 @@ const queueManager = state => {
       state.queue = state.queue.filter( fn )
       return true
     }
+
+  }
+
+}
+
+const packageManager = state => {
+
+  state.packages = {}
+  const expiry = 1000 * 60 * 60 * 24 // 24 hours in ms
+
+  return {
+
+    addPackage: name => {
+      state.packages[ name ] = state.packages[ name ] || []
+      let date = new Date( Date.now() + expiry )
+      state.packages[ name ].push( date )
+      return true
+    },
+
+    activePackages: () => {
+      let ret = {}
+      let keys = Object.keys( state.packages )
+
+      keys.forEach( k => {
+        let last = state.packages[ k ].slice( -1 )[0]
+        if ( last && last > Date.now() ) { ret[ k ] = last }
+      })
+
+      return ret
+    }
+
   }
 
 }
@@ -59,7 +91,8 @@ const User = ( name, { email = '', phone = '', twitter = '' } = {} ) => {
   return Object.assign(
     {},
     accessor( state ),
-    queueManager( state )
+    queueManager( state ),
+    packageManager( state )
   )
 }
 
