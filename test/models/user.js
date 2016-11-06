@@ -33,3 +33,15 @@ test('Queue', t => {
   t.deepEqual( user.takeFromQueue( 1 ), [] )
 
 })
+
+test('Package', t => {
+  
+  let user = User( 'sara', { email: 'abc' } )
+
+  user.addPackage( 'foo' )
+  t.true( user.activePackages()['foo'] > Date.now() )
+
+  user.addPackage( 'bar' )
+  t.true( Object.keys( user.activePackages() ).length === 2 )
+
+})
