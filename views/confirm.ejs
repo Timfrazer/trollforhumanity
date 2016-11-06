@@ -109,6 +109,9 @@ body, html {
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/moment.min.js"></script> <!-- Resource jQuery -->
     <script>
+
+    $('head').append(`<link rel="stylesheet" href="/stylesheets/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="/stylesheets/style.css"> <!-- Resource style -->`;);
 jQuery(document).ready(function($){
   var messages = {
     fomo: [
