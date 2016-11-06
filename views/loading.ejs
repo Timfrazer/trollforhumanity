@@ -1,40 +1,73 @@
 <!doctype html>
-
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-  <meta charset="utf-8">
-  <title>Trolling for "humanity" </title>
-  <meta name="Trolling for humanity" content="The HTML5 of the gods">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+
+	<title>Troll for humanity</title>
+	<style>
+
+		body, html {
+			background-color: black;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: rgba(0,0,0,0.6);
+			border-radius: 25px;
+			color: #FFF;
+			padding: 20px 40px;
+			position: absolute;
+			top: 30%;
+			right: -2%;
+			text-align: center;
+			width: 50%;
+		}
+
+		header > p, header > h1 {
+			margin-top: 30px;
+			width: 80%;
+		}
+
+		video {
+			height: 100%;
+			width: 100%;
+		}
+
+		.butt-butt {
+			border-radius: 5px;
+			background-color: #77DDAA;
+			color: white;
+			font-size: 1.6em;
+			font-weight: 800;
+			padding: 10px 20px;
+			margin-top: 0px;
+			text-decoration: none;
+		}
+
+	</style>
 </head>
+<body>
+	<header>
+		<h1>Most victims of cyber-bullying suffer anonymously.</h1>
+		<p>
+			The first step to fighting cyber-bullying is recognizing it when it happens.
+			If you or someone you know would benefit from experiencing first-hand what a victim
+			goes through, sign up for a <strong style="color: #FFAADD">cyber-empathy package</strong> by clicking the button below.
+		</p>
+		<p>
+			<a href="/troll" class="butt-butt">Start</a>
+		</p>
+	</header>
 
-<body style="text-align:center;">
-<div style = "min-height:100px;"> </div>
-  <div>
-    <img src="gears.svg" alt="">
-  </div>
-<div>
-  <h1 id ="yak">BUILDING THE YAK PACKS</h1>
-</div>
-</body>
-</html>
-
-
-
-
+	<section id="cd-timeline" class="cd-container">
+		<video src="/img/cyber-bullying-victims.mp4" autoplay loop></video>
+	</section> <!-- cd-timeline -->
 
 <script>
-    setTimeout(function(){
-       window.location='main.ejs';
-    }, 5000);
-
-    $(function() {
-        $('#yak').fadeOut(1000, function() {
-            $(this).text('Loading the yaks...').fadeIn(5000);
-        });
-
-    });
-
-
-</script>
+</script> <!-- Resource jQuery -->
+</body>
+</html>
