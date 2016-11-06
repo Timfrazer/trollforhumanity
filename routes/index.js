@@ -12,8 +12,9 @@ router.get('/troll', function(req, res)  {
 });
 
 router.post('/troll', function(req, res) {
-  app.troll( req.body );
-  res.send( req.body );
+  app.troll( req.body ).done( msgs => {
+    res.render('confirm', { messages: msgs });
+  })
 });
 
 module.exports = router;
