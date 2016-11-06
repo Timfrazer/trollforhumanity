@@ -15,6 +15,10 @@ router.get('/confirm', function(req, res)  {
   res.render('confirm');
 });
 
+router.get('/thankyouuu', function(req, res)  {
+  res.render('thankyouuu');
+});
+
 router.post('/troll', function(req, res) {
   app.troll( req.body ).done( msgs => {
     res.render('confirm', { messages: msgs });
