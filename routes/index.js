@@ -4,7 +4,7 @@ const app = require('../lib').default;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('main', { title: 'Express' });
 });
 
 router.post('/troll', function(req, res) {
