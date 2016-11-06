@@ -1,39 +1,45 @@
-
 <div class="container">
   <div class="header">
       <nav class="navbar navbar-default">
           <div class="container">
-          <div class="row">
+          <div class="row text-center">
              <h1 class="display-1">TROLLING FOR HUMANITY</h1>
           </div>
           </div>
           <!-- /.container-fluid -->
       </nav>
-
  <div id="particles" >
-   <h1 class="display-1"> YOUR SOCIAL NETWORK</h1>  
-
 </div>
-<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-
-
+<div>
+  <h1 class="display-1 text-center"> YOUR SOCIAL NETWORK</h1>
+</div>
 <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+<div class="alert alert-info text-center" role="alert">
+<p>
+  We need to collect a small amount of information about the participant before
+  commencing the automated campaign.
+</p>
+<p>
+  Note that it's critically important that the participant is informed that they are
+  part of a simulation designed to foster empathy, as the messages they receive will
+  otherwise be indistinguishable from actual cyber-bullying.
+</p>
+</div>
 <div class="bootstrap-iso">
  <div class="container-fluid">
   <div class="row">
    <div class="col-md-6 col-sm-6 col-xs-12">
-    <form class="form-horizontal" method="post" action="/log">
-
+    <form class="form-horizontal" method="post" action="/troll">
      <div class="form-group form-group-lg">
       <label class="control-label col-sm-2" for="name">
-       Name
+
       </label>
       <div class="col-sm-10">
        <div class="input-group">
         <div class="input-group-addon">
-         Participants
+         Participant Name
         </div>
-        <input class="form-control" id="name" name="rec_name" type="text"/>
+        <input class="form-control" id="name" name="rec_name" type="text" placeholder="Full legal name"/>
        </div>
       </div>
      </div>
@@ -50,7 +56,7 @@
          <i class="fa fa-bars">
          </i>
         </div>
-        <input class="form-control" id="email" name="rec_email" type="text"/>
+        <input class="form-control" id="rec_email" name="rec_email" type="text" placeholder="Please use work email if possible" />
        </div>
       </div>
      </div>
@@ -64,7 +70,7 @@
          <i class="fa fa-commenting-o">
          </i>
         </div>
-        <input class="form-control" id="tel" name="rec_tel" type="text"/>
+        <input class="form-control" id="tel" name="rec_tel" type="text" placeholder="Must be capable of receiving SMS messages" />
        </div>
       </div>
      </div>
@@ -78,7 +84,7 @@
          <i class="fa fa-twitter">
          </i>
         </div>
-        <input class="form-control" id="twitter" name="rec_twitter" type="text"/>
+        <input class="form-control" id="rec_twitter" name="rec_twitter" type="text" placeholder="e.g. @realDonaldTrump" />
        </div>
       </div>
      </div>
@@ -95,7 +101,7 @@
          Uncomfortable Truths
         </option>
         <option value="cat">
-         Cats
+         Famous Cats
         </option>
         <option value="fomo">
          FOMO
@@ -104,14 +110,16 @@
          Yak Facts
         </option>
        </select>
-       <span class="help-block" id="hint_package">
-        Please select
-       </span>
+       <p>
+         <span class="help-block" id="hint_package">
+          The package that you select determines the nature of the messages that
+          the participant will receive.
+         </span>
+       </p>
       </div>
      </div>
-
      <div class="form-group form-group-lg">
-      <label class="control-label col-sm-2" for="rec_twitter">
+      <label class="control-label col-sm-2" for="sender_email">
        Your email
       </label>
       <div class="col-sm-10">
@@ -120,13 +128,13 @@
          <i class="fa fa-bars">
          </i>
         </div>
-        <input class="form-control" id="rec_twitter" name="sender_email" type="text"/>
+        <input class="form-control" id="sender_email" name="sender_email" type="text" placeholder="Preferrably real email address" />
        </div>
       </div>
      </div>
       <div class="col-sm-10 col-sm-offset-2">
-       <button class="btn btn-default btn-lg btn-block" name="submit" type="submit">
-        Submit
+       <button class="btn btn-info btn-lg btn-block" name="submit" type="submit">
+        Review Package & Send
        </button>
             </div>
         </div>

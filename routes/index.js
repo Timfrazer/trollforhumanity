@@ -15,6 +15,10 @@ router.get('/confirm', function(req, res)  {
   res.render('confirm');
 });
 
+router.get('/thankyouuu', function(req, res)  {
+  res.render('thankyouuu');
+});
+
 router.post('/troll', function(req, res) {
 
   let params = {
@@ -30,16 +34,20 @@ router.post('/troll', function(req, res) {
   app.troll( params ).done( msgs => {
     res.render('confirm', { messages: msgs });
   })
+
 });
 
+router.get('/log', function( req, res ) {
+  res.send( 'get log' )
+})
+
 router.post('/log', function( req, res ) {
-  console.log( req.body )
   console.log( req.body.rec_name )
   console.log( req.body.rec_email )
   console.log( req.body.rec_tel )
   console.log( req.body.rec_twitter )
   console.log( req.body.rec_package )
   res.send( 'ok' )
-})
+});
 
 module.exports = router;
