@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Trolling for "humanity" </title>
+  <meta name="Trolling for humanity" content="The HTML5 of the gods">
+<style>
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
+body {
+  background-color: #151515;
+}
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#text {
+  font-family: 'Crimson Text', serif;
+  font-size: 32px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: #fff;
+  animation: text 2s infinite;
+  display: block;
+}
+#subtext {
+  font-family: 'Crimson Text', serif;
+  font-size: 18px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+}
+@keyframes text {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    color: #151515;
+    box-shadow: inset 270px 0 0 0 #e0e0e0;
+  }
+  100% {
+    box-shadow: inset -270px 0 0 0 #e0e0e0;
+    opacity: 0;
+  }
+}
+
+</style>
+
+</head>
+
+<body style="text-align:center;">
+<div style = "min-height:100px;"> </div>
+<div class="container">
+  <div id="text">TROLLING FOR HUMANITY</div>
+  <div id ="subtext">
+    <p>
+      This service is provided as an awareness tool for developing your ability  to understand what cyber bulling is by providing you the tools and serivces
+      to commit these horrible acts.
+    </p>>
+
+    <button type="button" onclick="alert('Hello world!')">Click Me!</button>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+<script>
+    setTimeout(function(){
+       window.location='main.ejs';
+    }, 7000);
+
+
+</script>

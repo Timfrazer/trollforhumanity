@@ -1,8 +1,68 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+*{border-radius:0px!important; -moz-border-radius:0px!important; -webkit-border-radius:0px!important; border:none!important }
+/*Override BS*/
+
+
+/*Main CSS*/
+#particles{height:500px}
+
+.navbar-default {
+background-color:white;
+border-color: none;
 }
 
-a {
-  color: #00B7FF;
+.navbar-nav > li{padding-top:50px; padding-bottom:30px}
+
+.navbar-nav {
+display: table;
+float: none;
+margin: 0 auto;
+table-layout: fixed;
+}
+
+
+
+@media (max-width: 767px) {
+ .navbar-nav > li:after{content: ""!important}
+}
+
+#particles {
+     padding-bottom:100px;
+}
+
+.bootstrap-iso .form-group button,
+.bootstrap-iso form input.form-control,
+.bootstrap-iso form textarea.form-control,
+.bootstrap-iso form select.form-control {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.bootstrap-iso .formden_header h2,
+.bootstrap-iso .formden_header p,
+.bootstrap-iso form {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black
+}
+
+.bootstrap-iso form button,
+.bootstrap-iso form button:hover {
+    color: #000000 !important;
+}
+
+.bootstrap-iso .form-control:focus {
+    border-color: #ffffff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.asteriskField {
+    color: red;
+}
+
+.bootstrap-iso form .input-group-addon {
+    color: #555555;
+    background-color: #eeeeee;
+    border-radius: 0px;
+    padding-left: 12px
 }

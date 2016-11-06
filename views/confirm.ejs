@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="/stylesheets/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="/stylesheets/timeline.css"> <!-- Resource style -->
+	<script src="/js/modernizr.js"></script> <!-- Modernizr -->
+
+	<title>Responsive Vertical Timeline</title>
+	<style>
+
+		body, html {
+			background-color: black;
+		}
+
+		.card-against-hoonamity {
+		    background: white;
+		    /*border: 2px solid black;*/
+		    border-radius: 24px;
+		    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+		    padding: 20px 30px;
+		  float: left;
+		    box-sizing: border-box;
+		    width: 90%;
+		  height:90%;
+		    margin: 0;
+		    /*stacking fieldsets above each other*/
+		    position: relative;
+				height: 225px;
+				width: 360px;
+		}
+
+		#confirm-area {
+			background: linear-gradient(0deg, #333, #000);
+			/*background: linear-gradient(0deg, #000, #333);*/
+			/*background: red;*/
+			margin-left: auto;
+			margin-right: auto;
+			padding-top: 120px;
+			padding-bottom: 240px;
+		}
+
+		#confirm-area > p {
+			display: block;
+			font-family: Helvetica, sans-serif;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+		}
+
+		.confirm-button {
+			background: #AFA;
+			border-radius: 24px;
+			color: #FFF;
+			font-size: 2.5em;
+			font-weight: 800;
+			padding: 60px 120px;
+			width: 255px;
+			height: 160px;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Please review and confirm the content of your awareness mission</h1>
+	</header>
+
+	<section id="cd-timeline" class="cd-container">
+		<!-- Dynamically generated -->
+	</section> <!-- cd-timeline -->
+
+	<section id="confirm-area">
+		<p><a class="confirm-button" href="/">Confirm</a></p>
+		<p>(No takebacksies)</p>
+	</section>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/js/moment.min.js"></script> <!-- Resource jQuery -->
+<script>
+	jQuery(document).ready(function($){
+		var timelineBlocks = $('.cd-timeline-block'),
+			offset = 0.8;
+
+		//hide timeline blocks which are outside the viewport
+		hideBlocks(timelineBlocks, offset);
+
+		//on scolling, show/animate timeline blocks when enter the viewport
+		$(window).on('scroll', function(){
+			(!window.requestAnimationFrame)
+				? setTimeout(function(){ showBlocks(timelineBlocks, offset); }, 100)
+				: window.requestAnimationFrame(function(){ showBlocks(timelineBlocks, offset); });
+		});
+
+		function hideBlocks(blocks, offset) {
+			blocks.each(function(){
+				( $(this).offset().top > $(window).scrollTop()+$(window).height()*offset ) && $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+			});
+		}
+
+		function showBlocks(blocks, offset) {
+			blocks.each(function(){
+				( $(this).offset().top <= $(window).scrollTop()+$(window).height()*offset && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) && $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+			});
+		}
+
+		function generateFomo() {
+			var fomo = arrayOfFomo();
+			var content = generateMessageDates(fomo);
+
+			for (var i = 0; i < content.length; i++) {
+				$('#cd-timeline').append(
+					`<div class="cd-timeline-block">
+						<div class="cd-timeline-img cd-picture">
+							<img src="img/cd-icon-location.svg" alt="Picture">
+						</div> <!-- cd-timeline-img -->
+
+						<div class="cd-timeline-content card-against-hoonamity">
+							<h2 class="message-content">"${content[i]['message']}"</h2>
+							<p>Delivery on: <strong>${content[i]['date']}</strong></p>
+							<p><a href="#0" class="cd-read-more change-button">Change</a></p>
+							<span class="cd-date">🤖</span>
+						</div> <!-- cd-timeline-content card-against-hoonamity -->
+					</div> <!-- cd-timeline-block -->`
+				);
+			};
+			setupChangeButtons();
+		};
+
+
+		// Takes in array of messages, spits out array of message-date objects
+		function generateMessageDates(messagesArray) {
+			var msgWithDate = [];
+			var dates = [];
+			var dateStrings = [];
+			var lastTime = Date.now();
+			for (var i = 0; i < messagesArray.length; i++) {
+				lastTime += 1000 * 60 * 60 * 2;
+				lastTime += Math.random() * 1000 * 60 * 60 * 20;
+				var dateString = moment(lastTime).format("MMMM Do, YYYY [at] H[:]mm[:]ss");
+
+				var msgDate = {
+					message: messagesArray[i],
+					date: dateString
+				};
+				msgWithDate.push(msgDate);
+			}
+			return msgWithDate;
+		}
+
+		function setupChangeButtons() {
+			$('.change-button')
+		}
+
+		generateFomo();
+	});
+
+	var fomo = [
+	  `Anything going on tonight?`,
+	  `Are you gonna need a ride tomorrow?`,
+	  `Can you send over the photos that you took yesterday?`,
+	  `Decided not to drink tonight, I can pick you up if you want.`,
+	  `Did you get tickets?`,
+	  `Do you have the address for the party?`,
+	  `Do you need a ride this weekend?`,
+	  `Get any good pics from yesterday?`,
+	  `Gonna be a little late`,
+	  `Got an extra ticket to the game, interested?`,
+	  `Got time for a quick drink later?`,
+	  `Heard you had a big night :)`,
+	  `Hey are you coming?`,
+	  `Hey I didn't see you there last night... Did you go?`,
+	  `Hey I still have your sweater, I should get that back to you lol`,
+	  `Hey I think I still owe you money...`,
+	  `Hey, I'm here!`,
+	  `Hey you're John's friend, right?`,
+	  `Hey, it was really great meeting you yesterday, let me know if you're interested in coming in for an interview.`,
+	  `How was last night?`,
+	  `How late did you stay out last night?`,
+	  `Planning a small get-together, are you free Saturday or Sunday?`,
+	  `Running late-- be there in 5 mins.`,
+	  `Should we wait for you?`,
+	  `So I'm putting you, me and John on the guest list, I'll just need $20 whenever I see you.`,
+	  `Sorry I forgot to save your number-- Who's this?`,
+	  `We still on for lunch?`,
+	  `We still on for dinner?`,
+	  `We still on for drinks?`,
+	  `Were you there last night?`,
+	  `We're gonna grab food before the party, you wanna join?`,
+	  `What are you doing after work?`,
+	  `What's your plan after the movie?`,
+	  `What's your plan after dinner?`,
+	  `When did you leave last night? I didn't see you.`,
+	  `Which bar is everyone meeting at?`,
+	  `Yo you coming?`,
+	  `Yo we're downstairs.`,
+	  `Yo we're outside.`,
+	  `We're just across the street, let us know when you're ready.`,
+	  `We should try to arrive early.`,
+	  `You coming?`,
+	  `You free later?`,
+	  `You going to the game?`,
+	  `You going to the party?`,
+	  `You ready?`,
+	]
+
+
+	function giveMeFomo() {
+	  var msgIndex = Math.round(Math.random() * fomo.length);
+	  return fomo[msgIndex];
+	}
+
+	function arrayOfFomo() {
+	  var fomoCombo = []
+	  while (fomoCombo.length < 10) {
+	    var msgIndex = Math.floor(Math.random() * fomo.length);
+	    // TODO: Make sure that the target message has not been used.
+	    console.log(msgIndex)
+	    if (fomoCombo.indexOf(msgIndex) == -1) { fomoCombo.push(msgIndex); };
+	  }
+
+	  fomoCombo = fomoCombo.map(function(i) {  return fomo[i] });
+	  return fomoCombo;
+	}
+
+</script> <!-- Resource jQuery -->
+</body>
+</html>
