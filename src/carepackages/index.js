@@ -12,11 +12,27 @@ const hot = () => ({
 
     // load each subscription with messages
     let queue = []
-    loaders.reduce( (acc, loader) => acc.concat( loader.fetch() ), queue )
+    packages.forEach( name => {
+      switch( name ) {
+        case 'cat':
+          queue.push( cat.fetch() )
+          break
+        case 'yak':
+          queue.push( cat.fetch() )
+          break
+        case 'fomo':
+          queue.push( cat.fetch() )
+          break
+        default:
+          break
+      }
+    } )
     // TODO
     // loaders.reduce( (acc, loader) => acc.concat( loader.fetchExcept( alreadySent ) ), queue )
 
-    user.addToQueue( queue )
+    // console.log( `carepackage::loading ${queue[0].length} messages to user's queue` )
+    user.addToQueue( queue[0] )
+    // console.log( `carepackage::loaded ${user.getState().queue.length} messages to user` )
     
     // return user
     res( user )
@@ -24,4 +40,4 @@ const hot = () => ({
 
 })
 
-export default substitute()
+export default hot()

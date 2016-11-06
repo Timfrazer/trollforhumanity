@@ -3,6 +3,8 @@ import api from '../api'
 const hot = () => {
 
   const interval = 1000 * 60 // minute
+  // const interval = 1000 * 2 // 2 second
+  
   let count = 0
   const batchQty = 24
 
@@ -33,6 +35,7 @@ const hot = () => {
   return {
 
     schedule: user => new Promise( (res, rej) => {
+      console.log( `scheduler::user queue length: ${user.getState().queue.length}` )
       let msgs = user.takeFromQueue( batchQty )
 
       trigger( user, msgs )

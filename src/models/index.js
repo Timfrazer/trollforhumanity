@@ -1,10 +1,11 @@
-import user from './user'
+import User from './user'
 
-const makeUser = params => new Promise( (res, rej) => {
-  let user = User( params )
+const makeUser = params => {
+
+  let user = User( params.name, params.options )
   params.packages.forEach( pkg => user.addPackage( pkg ) )
-  res( user )
-})
+  return user
+}
 
 export default {
   makeUser

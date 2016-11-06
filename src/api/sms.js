@@ -33,10 +33,13 @@ function hot(sid, token, twilioNumber) {
         from: twilioNumber
       }
 
-     client.sendMessage( payload, cb ) 
+     client.sendMessage( payload, (err, res) => {
+       if ( err ) { cb( err ) }
+       else { cb( null, `hot::sms sent at ${ Date.now() }` ) }
+     } ) 
     }
   }
 }
 
 const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default api( TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER )
+export default hot( TWILIO_SID, TWILIO_AUTH, TWILIO_NUMBER )

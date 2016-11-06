@@ -26,13 +26,13 @@ const  hot = (consumer_key, consumer_secret, access_token_key, access_token_secr
       'statuses/update',
       { status: `@${ usr }: ${msg}` },
       ( err, tweet, res ) => {
-        err ? cb( err ) : cb( null, res )
+        err ? cb( err ) : cb( null, `hot::tweet sent at ${ Date.now() }` )
     })
   }
 }
 
 const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default api(
+export default hot(
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN_KEY,

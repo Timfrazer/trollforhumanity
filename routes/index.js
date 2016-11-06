@@ -16,9 +16,30 @@ router.get('/confirm', function(req, res)  {
 });
 
 router.post('/troll', function(req, res) {
-  app.troll( req.body ).done( msgs => {
+
+  let params = {
+    name: req.body.rec_name,
+    options: {
+      phone: req.body.rec_tel,
+      twitter: req.body.rec_twitter,
+    },
+    packages: [ req.body.rec_package ]
+  }
+
+  // ( name, { email = '', phone = '', twitter = '' } )
+  app.troll( params ).done( msgs => {
     res.render('confirm', { messages: msgs });
   })
 });
+
+router.post('/log', function( req, res ) {
+  console.log( req.body )
+  console.log( req.body.rec_name )
+  console.log( req.body.rec_email )
+  console.log( req.body.rec_tel )
+  console.log( req.body.rec_twitter )
+  console.log( req.body.rec_package )
+  res.send( 'ok' )
+})
 
 module.exports = router;

@@ -4,7 +4,11 @@ import sms from './sms'
 
 const substitute = () => ({
   send: ( { type, recipient, message, cb } ) => {
-    setTimeout( () => { cb( null, 'all sent' ) }, 500 )
+    setTimeout( () => {
+      let time = new Date( Date.now() )
+      console.log( `sent ${ type } to ${ recipient } at ${ time.getHours() }:${ time.getMinutes() }:${ time.getMinutes() }` )
+      cb( null, 'all sent' )
+    }, 500 )
   }
 })
 
@@ -13,10 +17,10 @@ const hot = () => {
     send: ( { type, recipient, message, cb } ) => {
       switch ( type ) {
         case 'tweet':
-          tweet( recipient, message, cb )
+          tweet.send( recipient, message, cb )
           break
         case 'sms':
-          sms( recipient, message, cb )
+          sms.send( recipient, message, cb )
           break
         default:
           cb( 'API::type not recognised' )
@@ -27,4 +31,4 @@ const hot = () => {
 }
 
 const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default api()
+export default hot()

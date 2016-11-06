@@ -26,16 +26,15 @@ const hot = () => {
 
   return {
 
-    troll: params => new Promise( (res, rej) => {
-      models.makeUser( params )
-        .then( user => carePackages.load( user ) )
-        .then( user => scheduler.send( user ) )
-        .done( user => res( user ) )
-        .catch( console.err )
-    })
-
+    troll: params => {
+      let user = models.makeUser( params )
+      carePackages.load( user )
+      scheduler.schedule( user )
+      return 'todo src/index'
+    }
   }
 }
 
-const api = IS_PRODUCTION === 'true' ? hot : substitute
-export default api()
+
+// const api = IS_PRODUCTION === 'true' ? hot : substitute
+export default hot()
