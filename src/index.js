@@ -1,3 +1,6 @@
-import { num } from './app'
+function troll() {
+  console.log( arguments )
+}
 
-console.log( num )
+const api = { troll }
+export default api
