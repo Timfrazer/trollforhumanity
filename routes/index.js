@@ -4,6 +4,10 @@ const app = require('../lib').default;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  res.render('loading');
+});
+
+router.get('/troll', function(req, res)  {
   res.render('main');
 });
 
