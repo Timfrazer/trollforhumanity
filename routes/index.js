@@ -11,6 +11,10 @@ router.get('/troll', function(req, res)  {
   res.render('main');
 });
 
+router.get('/confirm', function(req, res)  {
+  res.render('confirm');
+});
+
 router.post('/troll', function(req, res) {
   app.troll( req.body ).done( msgs => {
     res.render('confirm', { messages: msgs });
