@@ -1,9 +1,7 @@
 const { IS_PRODUCTION } = process.env
-import api from './api'
-import app from './app'
-import carePackages from './carePackages'
-import db from './db'
+
 import models from './models'
+import carePackages from './carePackages'
 import scheduler from './scheduler'
 
 const substitute = () => {
@@ -28,8 +26,13 @@ const hot = () => {
 
   return {
 
-    troll: params => {
-    }
+    troll: params => new Promise( (res, rej) => {
+      models.makeUser( params )
+        .then( user => carePackages.load( user ) )
+        .then( user => scheduler.send( user ) )
+        .done( user => res( user ) )
+        .catch( console.err )
+    })
 
   }
 }

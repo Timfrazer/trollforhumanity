@@ -1,42 +1,27 @@
-function substitute() {
-  return {
-    get: function ( type, qty, rejectList, cb ) {
-      // TODO this func is incomplete, does not handle reject list
-      qty = Number( qty )
-      // make rejectList an optional argument
-      if ( typeof rejectList === 'function' && !cb ) {
-        cb = rejectList
-        rejectList = []
-      }
+import cat from './cat'
+import yak from './yak'
+import fomo from './fomo'
+const loaders = [ cat, yak, fomo ]
 
-      let messages = {}
-      let DB_QTY = 30
+const hot = () => ({
 
-      // generate dummy
-      for (let i = 0; i < DB_QTY; i++) {
-        messages[i + 1] = `Sample message ${ Math.floor( Math.random() * 100 ) }`
-      }
+  load: user => new Promise( (res, rej) => {
+    // get user subscriptions
+    let packages = Object.keys( user.activePackages() )
+    let alreadySent = user.getSentQueue().map( msg => msg.uuid )
 
+    // load each subscription with messages
+    let queue = []
+    loaders.reduce( (acc, loader) => acc.concat( loader.fetch() ), queue )
+    // TODO
+    // loaders.reduce( (acc, loader) => acc.concat( loader.fetchExcept( alreadySent ) ), queue )
 
-      // LOGIC
+    user.addToQueue( queue )
+    
+    // return user
+    res( user )
+  })
 
-
-      let ret = []
-      let keys = Object.keys( messages )
-
-      for (let i = 0; i < qty; i++) {
-        // get a random key
-        let key = keys[ Math.floor( Math.random() * keys.length ) ]
-
-        // if requesting more than we have
-        if ( i >= DB_QTY ) { break }
-
-        ret.push( messages[key] )
-      }
-
-      cb( null, { type: type, messages: ret } )
-    }
-  }
-}
+})
 
 export default substitute()

@@ -17,6 +17,12 @@ const queueManager = state => {
     },
 
     takeFromQueue: ( qty = 1 ) => {
+      if ( qty === 'all' ) {
+        let all = state.queue.splice( 0 )
+        state.sentQueue = state.sentQueue.concat( ret )
+        return all
+      }
+
       let ret = state.queue.splice( 0, qty )
       state.sentQueue = state.sentQueue.concat( ret )
       return ret
